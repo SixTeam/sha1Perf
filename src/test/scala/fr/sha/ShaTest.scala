@@ -9,6 +9,7 @@ import com.vidal.glow.GlowTools
 import java.nio.channels.FileChannel
 import java.nio.channels.FileChannel.MapMode.READ_ONLY
 import java.nio.ByteBuffer
+import io.Source
 
 class ShaTest extends FunSuite with ShouldMatchers {
 
@@ -153,6 +154,7 @@ object SHA {
 
     def scalaSum(file: File): String = {
         val sha1 = MessageDigest.getInstance("SHA1")
+        //val fileStream = Source.fromFile(file, "iso8859-1").bufferedReader()
         val fileStream = new BufferedInputStream( new FileInputStream(file) )
 
         val chunk = new Array[Byte](8*1024)
